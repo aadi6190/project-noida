@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Card Page</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="main">
+      <div class="nav">
+        <div class="nav-toggle">
+          <i class="fa fa-bars"></i>
+        </div>
+        <div class="top">
+          <img src="/assets/red-grape-icon-logo-w.svg" alt="Logo" />
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <i class="fa-solid fa-clock-rotate-left"></i>
+          <br>
+        </div>
+        <div class="mid">
+          <i class="fa-solid fa-house"></i>
+          <i class="fa-regular fa-compass"></i>
+          <i class="fa-regular fa-id-card"></i>
+          <i class="fa-solid fa-laptop-code"></i>
+          <i class="fa-regular fa-user"></i>
+          <i class="fa-solid fa-square-phone"></i>
+          <i class="fa-solid fa-book"></i>
+          <i class="fa-solid fa-book-open"></i>
+          <i class="fa-solid fa-school"></i>
+          <i class="fa-solid fa-chart-line"></i>
+        </div>
+        <div class="bottom">
+          <i class="fa-solid fa-angles-right"></i>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="main-top">
+          <section class="contact-card">
+            <div class="card-head">
+              <h1>Contact Card</h1>
+              <img
+                id="cardImage"
+                src="/assets/profile-photo/profile-photo-1.jpg"
+                alt="Contact Image"
+                style="
+                  width: 50px;
+                  height: 50px;
+                  border-radius: 50%;
+                  margin-bottom: 1rem;
+                "
+              />
+            </div>
+            <hr />
+            <div class="card">
+              <div class="card-details">
+                <p><strong>Name:</strong> <span id="cardName"></span></p>
+                <p><strong>Address:</strong> <span id="cardAddress"></span></p>
+                <p><strong>Number:</strong> <span id="cardNumber"></span></p>
+                <p>
+                  <strong>Created On:</strong> <span id="cardCreatedOn"></span>
+                </p>
+                <p>
+                  <strong>Contact Status:</strong> <span id="cardStatus"></span>
+                </p>
+                <p><strong>Notes:</strong> <span id="cardNotes"></span></p>
+              </div>
+              <div class="card-actions btm">
+                <div>
+                  <strong>Check-in:</strong><span>09/16/16 7:51 AM</span>
+                </div>
+                <div class="del-btn">
+                  <button id="deleteButton ">
+                    <i class="fa-regular fa-trash-can"></i>
+                  </button>
+                  <button id="editButton">
+                    <i class="fa-solid fa-pen"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="add-contact-card">
+            <h1>Add New Contact Card</h1>
+            <hr />
+            <form id="contactForm">
+              <div class="form-row">
+                <label>
+                  Name:
+                  <input type="text" name="name" required />
+                </label>
+                <label>
+                  Address:
+                  <input type="text" name="address" required />
+                </label>
+              </div>
+              <div class="form-row">
+                <label>
+                  Number:
+                  <input type="tel" name="number" required />
+                </label>
+                <label>
+                  Created On:
+                  <input type="date" name="createdOn" required />
+                </label>
+              </div>
+              <div class="form-row">
+                <label>
+                  Contact Status:
+                  <select name="status">
+                    <option value="ACTIVE">ACTIVE</option>
+                    <option value="INACTIVE">INACTIVE</option>
+                  </select>
+                </label>
+                <label>
+                  Notes:
+                  <textarea name="notes"></textarea>
+                </label>
+              </div>
+              <div class="form-row">
+                <label for=""
+                  >Attachment File
+                  <br />
+                  <br />
+                  <div class="upload">
+                    <i class="fa-solid fa-camera"></i>
+                    <label>
+                      <span class="file-info">Upload File</span>
+                      <p>Size: 600x150px, JPG, SVG, PNG; Max: 200Kb</p>
+                      <input type="file" name="attachment" />
+                    </label>
+                    <button type="button" class="choose-file-btn">
+                      Choose File
+                    </button>
+                  </div>
+                </label>
+
+                <div class="submit-button">
+                  <button type="submit">Submit</button>
+                </div>
+              </div>
+            </form>
+          </section>
+        </div>
+        <div class="list">
+          <section class="contact-list">
+            <table>
+              <thead>
+                <tr>
+                  <th><input type="checkbox" id="selectAll" /></th>
+                  <th>Contact Pic</th>
+                  <th>Name & Address</th>
+                  <th>Number</th>
+                  <th>Created On</th>
+                  <th>Contact Status</th>
+                  <th>Notes</th>
+                  <th>Delete</th>
+                </tr>
+              </thead>
+              <tbody id="contactTableBody"></tbody>
+            </table>
+          </section>
+        </div>
+      </div>
+
+      <div id="popup" class="popup" style="display: none">
+        <div class="popup-content">
+          <p>Do you want to delete user info?</p>
+          <button id="confirmDelete">Yes</button>
+          <button id="cancelDelete">No</button>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
